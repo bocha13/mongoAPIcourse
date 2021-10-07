@@ -5,9 +5,12 @@ const morgan = require('morgan');
 const app = express();
 
 // middleware
+// morgan
 app.use(morgan('dev'));
+// json express
 app.use(express.json());
 
+// custom
 app.use((req, res, next) => {
   console.log('hello');
   next();
