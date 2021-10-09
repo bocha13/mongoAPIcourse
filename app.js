@@ -7,9 +7,13 @@ const app = express();
 
 // middleware
 // morgan
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 // json express
 app.use(express.json());
+
+app.use(express.static(`${__dirname}/public`));
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
